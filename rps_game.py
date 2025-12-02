@@ -1,36 +1,51 @@
 import random
 
-options = ["ROCK", "PAPER", "SCISSOR"]
+s = ["ROCK", "PAPER", "SCISSOR"]
 
 print("Do you want to start the game?")
-choice = input("Y/N: ").upper()
+a1 = input("Y/N: ").upper()
 
-if choice == "N":
-    print("Thank You!! Game Closed.")
+if a1 == "N":
+    print("Thank You!!")
 
-while choice == "Y":
-    
+while a1 == "Y":
+
+    n = random.randint(0, 2)   # Index-based random logic (your original idea)
+    computer_move = s[n]
+
     print("\nROCK, PAPER, SCISSOR!!!")
-    user_move = input("Enter Your Move: ").upper()
+    m = input("Enter Your Move: ").upper()
 
-    if user_move not in options:
-        print("Please enter only ROCK, PAPER, or SCISSOR!")
+    if m not in s:
+        print("Please Enter ROCK, PAPER, or SCISSOR only!")
         continue
 
-    computer_move = random.choice(options)
     print("Computer chose:", computer_move)
 
-    if computer_move == user_move:
-        print("It's a TIE!")
-    elif (
-        (user_move == "ROCK" and computer_move == "SCISSOR") or
-        (user_move == "PAPER" and computer_move == "ROCK") or
-        (user_move == "SCISSOR" and computer_move == "PAPER")
-    ):
-        print("You WIN!! 🎉")
-    else:
-        print("You LOSE!! 😢")
+    if computer_move == "ROCK":
+        if m == "PAPER":
+            print("You win!!")
+        elif m == "SCISSOR":
+            print("You Lose!!")
+        else:
+            print("TIE")
 
-    choice = input("\nDo you want to play again? (Y/N): ").upper()
+    elif computer_move == "PAPER":
+        if m == "ROCK":
+            print("You Lose!!")
+        elif m == "SCISSOR":
+            print("You Win!!")
+        else:
+            print("TIE")
+
+    elif computer_move == "SCISSOR":
+        if m == "ROCK":
+            print("You win!!")
+        elif m == "PAPER":
+            print("You Lose!!")
+        else:
+            print("TIE")
+
+    a1 = input("\nDo You Want to play Again?? (Y/N): ").upper()
 
 print("Thanks for playing! ❤️")
